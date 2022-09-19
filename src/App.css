@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+/* Set up */
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  text-decoration: none;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a:hover {
+  color: #05a081;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+li {
+  list-style: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ff-primary: 'Fredoka One', cursive;
+  --ff-secondary: 'Inter', sans-serif;
+
+  --fw-reg: 100;
+  --fw-bold: 600;
+
+  --fs-h1: 3rem;
+  --fs-h2: 2.5rem;
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.3rem;
+  --fs-body: 1.2rem;
+  --fs-details: 1rem;
+
+  --clr-bg-1: #373954;
+  --clr-bg-2: #16181d;
+  --clr-bg-form: #20232a;
+  --clr-bg-input: #333946;
+  --clr-accent: #05a081;
+  --clr-accent-2: #300e01;
+  --clr-shadow: rgba(54, 136, 109, 0.599);
 }

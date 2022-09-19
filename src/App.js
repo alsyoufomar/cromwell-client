@@ -9,7 +9,7 @@ import Nav from './components/Nav';
 function App() {
   return (
     <div className='App'>
-      <Nav />
+      {/* <Nav /> */}
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
