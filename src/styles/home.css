@@ -1,0 +1,58 @@
+.home {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(var(--clr-bg-2), var(--clr-bg-1));
+}
+
+.home__hero {
+  background: linear-gradient(to top, #272727c4, rgba(91, 66, 66, 0.521)),
+    url(../../public/home-hero2.jpg) no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5rem 6rem;
+}
+
+.home__hero h1 {
+  font-size: var(--fs-h1);
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-reg);
+  color: var(--clr-accent);
+  padding-bottom: 2rem;
+}
+.home__hero p {
+  font-family: var(--ff-secondary);
+  font-size: var(--fs-body);
+  color: #fff;
+  width: 50%;
+}
+
+.home__fake-content {
+  font-size: var(--fs-h3);
+  font-family: var(--ff-primary);
+  color: var(--clr-accent);
+
+  padding: 0 11rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home__fake-content h2 {
+  padding: 4rem;
+  letter-spacing: 2px;
+}
+
+.home__fake-content__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--ff-secondary);
+  color: #fff;
+}
