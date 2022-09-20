@@ -4,7 +4,11 @@ const Home = () => {
   return (
     <div className='home'>
       <div className='home__hero'>
-        <h1>Welcome, Omar!</h1>
+        <h1>
+          Hello, Omar!
+          <br />
+          Welcome to Oioi
+        </h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde culpa
           accusantium quidem. Quod numquam voluptas quas labore soluta.
