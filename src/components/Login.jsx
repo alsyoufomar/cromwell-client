@@ -9,7 +9,7 @@ const Login = () => {
   const host = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isPoped, errMessage } = useSelector((state) => state.popup);
+  const { isPoped } = useSelector((state) => state.popup);
   const loginCredentials = useSelector((state) => state.auth.login);
 
   function handleChange(event) {
@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <div className='login'>
       <div className='login__main-container'>
-        {isPoped && <Popup errMessage={errMessage} />}
+        {isPoped && <Popup />}
         <div className='login__image-container'>
           <h3>Make it special...</h3>
         </div>

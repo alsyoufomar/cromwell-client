@@ -10,7 +10,6 @@ const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isPoped = useSelector((state) => state.popup.isPoped);
-  const errMessage = useSelector((state) => state.popup.errMessage);
   const regCredentials = useSelector((state) => state.auth.register);
 
   function handleChange(event) {
@@ -62,7 +61,7 @@ const Register = () => {
   return (
     <div className='register'>
       <div className='reg__main-container'>
-        {isPoped && <Popup errMessage={errMessage} />}
+        {isPoped && <Popup />}
         <div className='reg__image-container'>
           <h3>Make it special...</h3>
         </div>

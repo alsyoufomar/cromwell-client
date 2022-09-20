@@ -1,8 +1,9 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { popupActions } from '../store/popupSlice';
 
-const Popup = ({ errMessage }) => {
+const Popup = () => {
   const dispatch = useDispatch();
+  const errMessage = useSelector((state) => state.popup.errMessage);
 
   const handleErr = () => {
     dispatch(popupActions.fixErr());
