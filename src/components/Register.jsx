@@ -1,31 +1,51 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { authAction } from '../store/authSlice';
 import '../styles/register.css';
 
 const Register = () => {
-  const emptyRegister = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    confirmPass: '',
-  };
-  const [regData, setRegData] = useState(emptyRegister);
+  const host = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const regCredentials = useSelector((state) => state.auth.register);
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setRegData((prevRegData) => {
-      return {
-        ...prevRegData,
-        [name]: value,
-      };
-    });
+    dispatch(
+      authAction.setRegCredentials({ ...regCredentials, [name]: value })
+    );
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate('/landing');
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(regCredentials),
+    };
+
+    fetch(`${host}/user/register`, options)
+      .then((res) => {
+        if (!res.ok && res.error) {
+          console.log(res.error);
+          throw Error('could not fetch the data from the source');
+        }
+        return res.json();
+      })
+      .then((res) => {
+        localStorage.setItem('jwt', res.token);
+        dispatch(
+          authAction.setLoginCredentials({
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: '',
+            confirmPass: '',
+          })
+        );
+        navigate('/landing');
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -44,7 +64,7 @@ const Register = () => {
                 placeholder='First Name'
                 onChange={handleChange}
                 name='firstname'
-                value={regData.firstname}
+                value={regCredentials.firstname}
                 autoComplete='off'
                 id='firstname'
               />
@@ -57,7 +77,7 @@ const Register = () => {
                 placeholder='Last Name'
                 onChange={handleChange}
                 name='lastname'
-                value={regData.lastname}
+                value={regCredentials.lastname}
                 autoComplete='off'
                 id='lastname'
               />
@@ -72,7 +92,7 @@ const Register = () => {
               placeholder='Email'
               onChange={handleChange}
               name='email'
-              value={regData.email}
+              value={regCredentials.email}
               autoComplete='off'
               id='regEmail'
             />
@@ -86,7 +106,7 @@ const Register = () => {
               placeholder='Password'
               onChange={handleChange}
               name='password'
-              value={regData.password}
+              value={regCredentials.password}
               autoComplete='off'
               id='regPassword'
             />
@@ -100,7 +120,7 @@ const Register = () => {
               placeholder='Confirm Password'
               onChange={handleChange}
               name='confirmPass'
-              value={regData.confirmPass}
+              value={regCredentials.confirmPass}
               autoComplete='off'
               id='confirm-pass'
             />

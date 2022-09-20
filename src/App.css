@@ -53,3 +53,28 @@ p {
   --clr-accent-2: #300e01;
   --clr-shadow: rgba(54, 136, 109, 0.599);
 }
+
+.products {
+  background: linear-gradient(to top, #272727c4, rgba(91, 66, 66, 0.521)),
+    url(../public/products-hero.jpg) no-repeat center center;
+}
+.forum {
+  background: linear-gradient(to top, #272727c4, rgba(91, 66, 66, 0.521)),
+    url(../public/forum-hero.jpg) no-repeat center center;
+}
+.about {
+  background: linear-gradient(to top, #272727c4, rgba(91, 66, 66, 0.521)),
+    url(../public/about-hero.jpg) no-repeat center center;
+}
+.products,
+.forum,
+.about {
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 6rem;
+  color: #fff;
+  font-size: var(--fs-h1);
+}
