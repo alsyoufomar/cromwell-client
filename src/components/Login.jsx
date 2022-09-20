@@ -82,6 +82,41 @@ const Login = () => {
           <Link to='/register'>Register</Link>
         </form>
       </div>
+      <div className='login__main-container-phone'>
+        <form onSubmit={handleSubmit} className='login__form-phone'>
+          <h3>Make it special...</h3>
+          <div className='login__input-container-phone'>
+            <label htmlFor='loginEmail'>Email</label>
+            <br />
+            <input
+              type='email'
+              placeholder='Email'
+              onChange={handleChange}
+              name='email'
+              value={loginCredentials.email}
+              autoComplete='off'
+              id='loginEmail'
+            />
+          </div>
+
+          <div className='login__input-container-phone'>
+            <label htmlFor='loginPassword'>Password</label>
+            <br />
+            <input
+              type='password'
+              placeholder='Password'
+              onChange={handleChange}
+              name='password'
+              value={loginCredentials.password}
+              autoComplete='off'
+              id='loginPassword'
+            />
+          </div>
+
+          <button className='submit'>submit</button>
+          <Link to='/register'>Register</Link>
+        </form>
+      </div>
     </div>
   );
 };

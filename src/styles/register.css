@@ -67,6 +67,16 @@
   padding: 0 0.5rem;
   background-color: #333946;
   color: #fff;
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.reg__input-container input:focus {
+  box-shadow: 0 0 5px var(--clr-shadow);
+  border: 1px solid var(--clr-shadow);
 }
 
 label {
@@ -90,3 +100,5 @@ label {
   background-color: var(--clr-accent);
   color: var(--clr-bg-form);
 }
+
+/* The popup styling is in login.css file */
