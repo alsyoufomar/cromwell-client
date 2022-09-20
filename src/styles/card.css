@@ -1,0 +1,31 @@
+.home__service__cards li {
+  flex-basis: 23em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 13px;
+  padding-bottom: 20px;
+  background-color: white;
+  color: #000;
+  font-family: var(--ff-secondary);
+  font-size: var(--fs-body);
+}
+
+.home__service__cards li h3 {
+  font-weight: var(--fw-reg);
+  color: #2f3060;
+  padding: 1em 0;
+}
+
+.home__service__cards li p {
+  color: #666666;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.home__service__cards li img {
+  width: 100%;
+  height: 75%;
+  align-self: center;
+  object-fit: cover;
+}

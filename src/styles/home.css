@@ -35,7 +35,6 @@
   font-family: var(--ff-primary);
   color: var(--clr-accent);
 
-  padding: 0 11rem;
   padding-bottom: 6rem;
   display: flex;
   flex-direction: column;
@@ -44,15 +43,88 @@
 }
 
 .home__fake-content h2 {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-reg);
   padding: 4rem;
   letter-spacing: 2px;
 }
 
-.home__fake-content__details {
+.home__fake-content__customer-review {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  padding: 0 11rem;
+  margin-bottom: 5rem;
+  letter-spacing: 1px;
+  line-height: 1.5;
   font-family: var(--ff-secondary);
+  font-style: italic;
   color: #fff;
+}
+
+.home__fake-content__customer-review span {
+  color: var(--clr-accent);
+}
+
+.home__fake-content__advertise {
+  background: linear-gradient(to top, #272727c4, rgba(91, 66, 66, 0.521)),
+    url(../../public/dummy-bg.jpg) no-repeat center center;
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5rem 6rem;
+}
+
+.home__fake-content__advertise h2 {
+  color: #fff;
+  font-family: var(--ff-secondary);
+  letter-spacing: 0;
+  font-size: var(--fs-h2);
+  padding: 0;
+}
+
+.home__fake-content__advertise p {
+  color: #fff;
+  font-family: var(--ff-secondary);
+  letter-spacing: 0;
+  line-height: 1.7;
+}
+
+.home__fake-content__advertise .submit {
+  width: 13em;
+  font-size: var(--fs-body);
+  height: 3rem;
+}
+
+.home__fake-content__service {
+  background: #fff;
+  min-height: 120vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.home__fake-content__service .submit {
+  width: 40%;
+  font-size: var(--fs-body);
+  height: 3rem;
+  margin: 3em;
+}
+
+.home__fake-content__service h2 {
+  padding: 1em;
+}
+
+.home__service__cards {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 40px;
 }
