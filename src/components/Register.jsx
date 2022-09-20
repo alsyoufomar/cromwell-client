@@ -1,12 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { popupActions } from '../store/popupSlice';
 import { authAction } from '../store/authSlice';
+import Popup from './Popup';
 import '../styles/register.css';
 
 const Register = () => {
   const host = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isPoped = useSelector((state) => state.popup.isPoped);
+  const errMessage = useSelector((state) => state.popup.errMessage);
   const regCredentials = useSelector((state) => state.auth.register);
 
   function handleChange(event) {
@@ -25,25 +29,32 @@ const Register = () => {
     };
 
     fetch(`${host}/user/register`, options)
+      .then((res) => res.json())
       .then((res) => {
-        if (!res.ok && res.error) {
-          console.log(res.error);
-          throw Error('could not fetch the data from the source');
+        if (res.error) {
+          if (res.error === '"confirmPass" must be [ref:password]') {
+            dispatch(
+              popupActions.setErrMessage(
+                'Please re-enter the Password correctly'
+              )
+            );
+          } else {
+            dispatch(popupActions.setErrMessage(res.error));
+          }
+          dispatch(popupActions.throwErr());
+        } else {
+          localStorage.setItem('jwt', res.token);
+          dispatch(
+            authAction.setLoginCredentials({
+              firstname: '',
+              lastname: '',
+              email: '',
+              password: '',
+              confirmPass: '',
+            })
+          );
+          navigate('/landing');
         }
-        return res.json();
-      })
-      .then((res) => {
-        localStorage.setItem('jwt', res.token);
-        dispatch(
-          authAction.setLoginCredentials({
-            firstname: '',
-            lastname: '',
-            email: '',
-            password: '',
-            confirmPass: '',
-          })
-        );
-        navigate('/landing');
       })
       .catch((err) => console.log(err));
   };
@@ -51,6 +62,7 @@ const Register = () => {
   return (
     <div className='register'>
       <div className='reg__main-container'>
+        {isPoped && <Popup errMessage={errMessage} />}
         <div className='reg__image-container'>
           <h3>Make it special...</h3>
         </div>

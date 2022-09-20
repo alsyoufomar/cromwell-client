@@ -1,12 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
+import { popupActions } from '../store/popupSlice';
 import { authAction } from '../store/authSlice';
+import Popup from './Popup';
 import '../styles/login.css';
 
 const Login = () => {
   const host = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isPoped, errMessage } = useSelector((state) => state.popup);
   const loginCredentials = useSelector((state) => state.auth.login);
 
   function handleChange(event) {
@@ -25,17 +28,16 @@ const Login = () => {
     };
 
     fetch(`${host}/user/login`, options)
+      .then((res) => res.json())
       .then((res) => {
-        if (!res.ok && res.error) {
-          console.log(res.error);
-          throw Error('could not fetch the data from the source');
+        if (res.error) {
+          dispatch(popupActions.setErrMessage(res.error));
+          dispatch(popupActions.throwErr());
+        } else {
+          localStorage.setItem('jwt', res.token);
+          dispatch(authAction.setLoginCredentials({ email: '', password: '' }));
+          navigate('/landing');
         }
-        return res.json();
-      })
-      .then((res) => {
-        localStorage.setItem('jwt', res.token);
-        dispatch(authAction.setLoginCredentials({ email: '', password: '' }));
-        navigate('/landing');
       })
       .catch((err) => console.log(err));
   };
@@ -43,6 +45,7 @@ const Login = () => {
   return (
     <div className='login'>
       <div className='login__main-container'>
+        {isPoped && <Popup errMessage={errMessage} />}
         <div className='login__image-container'>
           <h3>Make it special...</h3>
         </div>
