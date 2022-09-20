@@ -1,12 +1,27 @@
 import '../styles/nav.css';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { navActions } from '../store/navSlice';
 
 const Nav = () => {
+  const dispatch = useDispatch();
+  const isDark = useSelector((state) => state.nav.isDark);
+
+  const handleNavColor = () => {
+    if (window.scrollY >= 200) {
+      dispatch(navActions.makeDark());
+    } else {
+      dispatch(navActions.makeTrans());
+    }
+  };
+
+  window.addEventListener('scroll', handleNavColor);
+
   const handleLogout = () => {
     localStorage.removeItem('jwt');
   };
   return (
-    <div className='nav'>
+    <div className={isDark ? 'nav-dark' : 'nav'}>
       <ul className='nav__pages'>
         <li className='nav__logo--item'>
           <Link to='/home'>
