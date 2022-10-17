@@ -93,6 +93,7 @@
   font-family: var(--ff-secondary);
   letter-spacing: 0;
   line-height: 1.7;
+  font-size: calc(var(--fs-body) + 0.1rem);
 }
 
 .home__fake-content__advertise .submit {
